@@ -18,13 +18,10 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 
-from genetic_tests.tests.views import TestViewSet, StatistickView
+from genetic_tests.tests.views import TestsView, StatisticsView
 
-router = routers.SimpleRouter()
-router.register(r'tests', TestViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/statistics', StatistickView.as_view()),
-    path('api/', include(router.urls)),
+    path('tests', TestsView.as_view(), name='tests'),
+    path('statistics', StatisticsView.as_view(), name='statistics'),
 ]
